@@ -1,0 +1,26 @@
+{
+  "name": "the-modern-blog",
+  "version": "1.0.0",
+  "description": "modern blog app",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon back/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-Gamal/blogsqurare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-Gamal/blogsqurare/issues"
+  },
+  "homepage": "https://github.com/O-Gamal/blogsqurare#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
