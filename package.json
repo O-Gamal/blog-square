@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "modern blog app",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon back/server.js"
+    "server": "nodemon back/server.js",
+    "client": "npm start --prefix front",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import -articles": "node back/seeder -articles",
+    "data:import -users": "node back/seeder -users",
+    "data:destroy": "node back/seeder -d"
   },
   "repository": {
     "type": "git",
@@ -18,9 +24,15 @@
   },
   "homepage": "https://github.com/O-Gamal/blogsqurare#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.6"
   },
   "devDependencies": {
+    "concurrently": "^7.3.0",
     "nodemon": "^2.0.19"
   }
 }
