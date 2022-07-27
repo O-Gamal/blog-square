@@ -1,0 +1,20 @@
+@use '../utils' as *;
+
+.rec-topics-container {
+  .rec-topics {
+    position: sticky;
+    top: 0px;
+
+    .tags-container {
+      flex-wrap: wrap;
+      gap: rem(10);
+    }
+    .tag {
+      background-color: var(--light-gray-color);
+      padding: rem(5) rem(20);
+      font-size: rem(18);
+      border-radius: rem(8);
+      cursor: pointer;
+    }
+  }
+}

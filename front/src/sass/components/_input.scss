@@ -1,0 +1,23 @@
+@use '../utils' as *;
+
+.input {
+  border-radius: rem(50);
+  padding: rem(12) rem(24);
+  color: var(--primary-black);
+  border: 1px solid var(--gray-500);
+  outline: none;
+  font-size: rem(18);
+  border-radius: rem(14);
+  background-color: rgba($color: #ffffff, $alpha: 0.6);
+  transition: all 0.2s;
+
+  &.rounded {
+    border-radius: rem(50);
+    min-height: rem(72);
+  }
+
+  &:focus,
+  &:hover {
+    transform: scale(1.01);
+  }
+}

@@ -1,0 +1,30 @@
+@use '../utils/' as *;
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: rem(8);
+}
+
+.tag {
+  background-color: var(--primary-white);
+  display: inline-block;
+  padding: rem(3) rem(12);
+  border-radius: rem(8);
+  font-size: rem(16);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover,
+  :focus-visible {
+    transform: scale(1.02);
+    background-color: white;
+  }
+
+  &.sm {
+    background-color: var(--light-blue);
+    font-size: rem(12);
+  }
+}

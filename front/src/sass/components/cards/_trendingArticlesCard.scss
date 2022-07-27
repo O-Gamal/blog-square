@@ -1,0 +1,16 @@
+@use '../../utils/' as *;
+
+.trending-articles-card {
+  background-color: var(--light-pink);
+}
+.trending-articles-card-container {
+  h4 {
+    margin-bottom: rem(40);
+  }
+}
+
+.minimal-cards-container {
+  display: flex;
+  gap: rem(20);
+  margin-right: rem(20);
+}
