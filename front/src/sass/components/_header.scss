@@ -1,0 +1,41 @@
+@use '../utils/' as *;
+.header {
+  min-height: 100vh;
+}
+
+.header-content {
+  margin: rem(100);
+  grid-template-columns: 1fr 2fr;
+
+  .content-text {
+    h1 {
+      position: relative;
+      width: fit-content;
+      padding: 0 rem(15);
+      margin: 0;
+      cursor: pointer;
+
+      z-index: 1;
+    }
+    h1::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+      transition: all 0.3s ease-out;
+      background-color: var(--dark-color);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    .selected {
+      color: white;
+    }
+
+    .selected::before {
+      transform: scaleX(1);
+    }
+  }
+}

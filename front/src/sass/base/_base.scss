@@ -1,0 +1,67 @@
+@use '../utils' as *;
+
+html {
+  font-family: var(--primary-font);
+}
+
+* {
+  font-weight: 400;
+}
+
+body {
+  min-height: 150vh;
+  background-color: var(--primary-white);
+  color: var(--primary-black);
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  margin: rem(5);
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  transition: all 0.2s;
+
+  &:hover {
+    font-variation-settings: 'FILL' 1;
+    transform: scale(1.02);
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  // object-fit: cover;
+  // width: 100%;
+  // object-position: center;
+}
+
+.error {
+  color: rgb(255, 31, 31);
+  margin-top: rem(20);
+}
+
+.card {
+  border-radius: rem(24);
+  padding: rem(40);
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+.icon {
+  margin: auto rem(10);
+}
+
+label {
+  text-align: center;
+}

@@ -1,0 +1,52 @@
+@use '../utils' as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+  font-weight: 700;
+  line-height: normal;
+}
+
+h1,
+.h1 {
+  margin-bottom: rem(16);
+  font-size: rem(64);
+}
+
+h2,
+.h2 {
+  margin-bottom: rem(16);
+  font-size: rem(48);
+}
+
+h3,
+.h3 {
+  font-size: rem(32);
+  margin-bottom: rem(12);
+}
+
+h4,
+.h4 {
+  font-size: rem(24);
+}
+
+h5,
+.h5 {
+  font-size: rem(20);
+}
+
+p {
+  font-size: rem(20);
+  font-weight: 400;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

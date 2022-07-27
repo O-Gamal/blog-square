@@ -1,0 +1,15 @@
+@use '../../utils/' as *;
+
+.recommended-topics-card {
+  background-color: var(--primary-black);
+
+  h4 {
+    color: var(--primary-white);
+    margin-bottom: rem(40);
+  }
+
+  .recommended-topics-card-container {
+    position: sticky;
+    top: rem(30);
+  }
+}

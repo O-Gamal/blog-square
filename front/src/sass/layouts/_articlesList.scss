@@ -1,0 +1,8 @@
+@use '../utils/' as *;
+
+.articles-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(30);
+}

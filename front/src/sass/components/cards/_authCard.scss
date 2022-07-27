@@ -1,0 +1,74 @@
+@use '../../utils' as *;
+
+.auth-card {
+  background-color: var(--light-blue);
+
+  .auth-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(26);
+  }
+}
+
+.auth-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid var(--gray-500);
+  font-size: rem(20);
+  border-radius: rem(50);
+  min-height: rem(56);
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+
+  .nav-elem {
+    font-weight: 700;
+    z-index: 1;
+
+    &.selected {
+      color: var(--primary-white);
+    }
+  }
+
+  .selected-elem {
+    position: absolute;
+    background-color: var(--primary-black);
+    height: 95%;
+    width: 50%;
+    margin: 0 rem(2);
+    border-radius: rem(50);
+    left: 0;
+  }
+}
+
+.email-input {
+  margin-bottom: rem(12);
+}
+
+hr {
+  width: 80%;
+  border-top: 2px solid var(--gray-600);
+  color: var(--gray-600);
+  overflow: visible;
+  text-align: center;
+  height: 0;
+  margin: rem(30) auto;
+}
+
+hr:after {
+  content: 'OR';
+  font-weight: 700;
+  background-color: var(--light-blue);
+  padding: 0 rem(10);
+  position: relative;
+  top: -13px;
+}
+
+.signin-btns {
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+  width: 100%;
+}

@@ -1,0 +1,79 @@
+@use '../../utils/' as *;
+
+.article-card {
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: white;
+
+  &:hover,
+  :focus-visible {
+    transform: scale(1.005);
+    background-color: var(--primary-white);
+  }
+}
+
+.article-card-container {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  width: 100%;
+
+  .article-img-container {
+    border: 1px solid var(--gray-500);
+    padding: rem(5);
+    border-radius: rem(15);
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: rem(12);
+    }
+  }
+
+  .article-content {
+    padding: rem(20);
+
+    .top-area {
+      color: var(--gray-600);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: rem(10);
+
+      .article-meta span {
+        margin-right: rem(20);
+        font-weight: 600;
+      }
+    }
+
+    .article-title {
+      width: 100%;
+      margin-bottom: rem(20);
+    }
+
+    .article-bottom-area {
+      display: flex;
+      gap: rem(8);
+    }
+  }
+}
+
+.minimal {
+  border: 1px solid var(--gray-600);
+  border-radius: rem(15);
+  max-width: rem(450);
+  user-select: none;
+
+  .article-card-container {
+    display: block;
+  }
+
+  .article-title {
+    font-size: rem(20);
+    margin: 0 !important;
+  }
+
+  .article-content {
+    padding: rem(20);
+  }
+}
