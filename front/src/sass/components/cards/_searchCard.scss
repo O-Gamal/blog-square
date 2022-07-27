@@ -17,6 +17,12 @@
     .search-input {
       font-size: rem(20);
       padding-left: rem(32);
+
+      &:hover,
+      &:focus-visible {
+        box-shadow: rgb(189, 224, 218) 3px 3px 6px 0px inset,
+          rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+      }
     }
   }
 }

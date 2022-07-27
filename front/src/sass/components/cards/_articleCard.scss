@@ -64,6 +64,12 @@
   max-width: rem(450);
   user-select: none;
 
+  &:hover,
+  &:focus-visible {
+    box-shadow: rgb(229, 222, 240) 3px 3px 6px 0px inset,
+      rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  }
+
   .article-card-container {
     display: block;
   }
