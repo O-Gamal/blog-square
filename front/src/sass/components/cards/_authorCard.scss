@@ -1,0 +1,32 @@
+@use '../../utils/' as *;
+
+.author-card {
+  background-color: var(--light-blue);
+
+  .author-card-container {
+    position: sticky;
+    top: rem(20);
+
+    .author-followers-number {
+      margin-bottom: rem(10);
+      color: var(--gray-500);
+    }
+
+    .follow-btn {
+      padding: rem(5);
+    }
+
+    .minimal {
+      margin-bottom: rem(12);
+
+      .article-title {
+        text-align: left;
+        font-size: rem(18);
+      }
+    }
+
+    h5 {
+      margin-top: rem(60);
+    }
+  }
+}

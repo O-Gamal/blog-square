@@ -10,6 +10,8 @@ html {
 
 body {
   min-height: 150vh;
+  max-width: rem(1170);
+  margin: 0 auto;
   background-color: var(--primary-white);
   color: var(--primary-black);
 }
@@ -64,4 +66,8 @@ img {
 
 label {
   text-align: center;
+}
+
+.bookmark-icon {
+  cursor: pointer;
 }

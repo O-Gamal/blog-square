@@ -3,9 +3,11 @@
 @forward 'button';
 @forward 'input';
 @forward 'tag';
+@forward 'nav';
 @forward './cards/searchCard';
 @forward './cards/authCard';
 @forward './cards/recommendedTopicsCard';
 @forward './cards/articleCard';
 @forward './cards/trendingArticlesCard';
 @forward './cards/footerCard';
+@forward './cards/authorCard';

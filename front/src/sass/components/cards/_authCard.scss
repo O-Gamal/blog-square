@@ -24,8 +24,14 @@
   position: relative;
 
   .nav-elem {
+    padding: rem(10);
+    border-radius: rem(50);
     font-weight: 700;
     z-index: 1;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    user-select: none;
 
     &.selected {
       color: var(--primary-white);

@@ -1,0 +1,23 @@
+@use '../utils/' as *;
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 rem(10);
+  min-height: 15vh;
+
+  .nav-register {
+    font-size: rem(24);
+    font-weight: 600;
+    text-decoration: underline;
+    transition: all 0.2s;
+    padding: rem(5) rem(20);
+    border-radius: rem(10);
+
+    &:hover {
+      transform: scale(1.01);
+      background-color: var(--gray-100);
+    }
+  }
+}

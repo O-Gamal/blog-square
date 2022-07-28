@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
+import Logo from './Logo';
+import Button from './Button';
 
 const Nav = () => {
   return (
-    <nav className='nav flex bg-primary'>
-      <div className='logo'>BlogSquare.</div>
-      <Link to={'register'} className='link h4'>
-        Register Now
+    <nav className='nav'>
+      <Logo size={40} />
+      <Link to={'register'} className='link'>
+        <div className='nav-register'>Register</div>
       </Link>
     </nav>
   );

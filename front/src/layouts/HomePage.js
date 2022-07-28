@@ -9,26 +9,26 @@ const HomePage = () => {
   return (
     <div className='home'>
       <div className='home-container'>
-        <div className='home-header'>
+        <section className='home-header'>
           <Logo />
           <h3>The ultimate modern blog app for creators.</h3>
-        </div>
-        <div className='card auth-card'>
+        </section>
+        <section className='card auth-card'>
           <AuthCard />
-        </div>
-        <div className='card trending-articles-card'>
+        </section>
+        <section className='card trending-articles-card'>
           <TrendingArticlesCard />
-        </div>
+        </section>
         <div></div>
-        <div className='card search-card'>
+        <section className='card search-card'>
           <SearchCard />
-        </div>
-        <div className='card recommended-topics-card'>
+        </section>
+        <section className='card recommended-topics-card'>
           <RecommendedTopicsCard />
-        </div>
-        <div className='articles-list'>
+        </section>
+        <section className='articles-list'>
           <ArticlesList />
-        </div>
+        </section>
       </div>
     </div>
   );
