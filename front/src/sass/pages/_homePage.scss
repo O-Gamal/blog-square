@@ -1,0 +1,54 @@
+@use '../utils' as *;
+
+.home {
+  padding-top: 5vh;
+  display: flex;
+  justify-content: center;
+  .home-container {
+    display: grid;
+    grid-template-columns: rem(720) rem(420);
+    gap: rem(30);
+
+    max-width: rem(1170);
+
+    .trending-articles-card {
+      grid-row: 2/3;
+    }
+
+    .auth-card {
+      grid-row: 1/4;
+      grid-column: 2;
+    }
+
+    .search-card {
+      grid-row: 3;
+    }
+
+    .recommended-topics-card {
+      grid-column: 2;
+      grid-row: 4;
+    }
+
+    .articles-list {
+      grid-row: 4;
+    }
+
+    .home-header {
+      padding: rem(30) 0 0 rem(30);
+
+      h3 {
+        color: var(--gray-500);
+      }
+    }
+
+    .user-panel-card {
+      background-color: var(--light-blue);
+    }
+  }
+
+  .logged-in {
+    .auth-card {
+      grid-row: 2/4;
+    }
+  }
+}

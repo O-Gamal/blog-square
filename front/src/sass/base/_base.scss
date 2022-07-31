@@ -58,10 +58,12 @@ img {
   padding: rem(40);
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
     rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  overflow: hidden;
 }
 
 .icon {
   margin: auto rem(10);
+  cursor: pointer;
 }
 
 label {
@@ -70,4 +72,10 @@ label {
 
 .bookmark-icon {
   cursor: pointer;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import Button from './Button';
+import Button from './utils/Button';
 
 const Nav = () => {
   return (

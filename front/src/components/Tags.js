@@ -1,6 +1,6 @@
 import Tag from './Tag';
 
-const TagsContainer = () => {
+const Tags = () => {
   return (
     <div className='tags-container'>
       <Tag tag='Artificial Intelligence' />
@@ -12,4 +12,4 @@ const TagsContainer = () => {
   );
 };
 
-export default TagsContainer;
+export default Tags;

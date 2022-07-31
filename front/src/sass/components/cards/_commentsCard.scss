@@ -1,0 +1,78 @@
+@use '../../utils/' as *;
+
+.comments-card {
+  background-color: white;
+}
+.article-likes-comments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: rem(20);
+  h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon {
+    margin: 0 rem(5);
+    cursor: pointer;
+  }
+}
+.article-comments-container {
+  margin-top: rem(60);
+}
+
+.comments-form {
+  position: relative;
+
+  textarea {
+    width: 100%;
+    min-height: 30vh;
+    padding: rem(20);
+    border-radius: rem(24);
+    font-size: rem(20);
+    background-color: var(--primary-white);
+    resize: none;
+  }
+
+  .cancel-btn,
+  .publish-btn {
+    z-index: 1;
+    width: 20% !important;
+    position: absolute;
+    bottom: rem(20);
+  }
+
+  .publish-btn {
+    right: 2%;
+  }
+  .cancel-btn {
+    right: 24%;
+  }
+}
+
+.comment {
+  border-radius: rem(24);
+  margin-top: rem(30);
+  background-color: var(--primary-white);
+  padding: rem(20);
+  width: 90%;
+  float: left;
+  .meta {
+    h5 {
+      margin: 0;
+    }
+    span {
+      color: var(--gray-600);
+      display: inline-block;
+      margin-bottom: rem(20);
+    }
+  }
+}
+
+.author-comment {
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  float: right;
+}

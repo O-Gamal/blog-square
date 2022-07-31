@@ -3,7 +3,8 @@
 .recommended-topics-card {
   background-color: var(--primary-black);
 
-  h4 {
+  h5 {
+    margin: 0;
     color: var(--primary-white);
     margin-bottom: rem(40);
   }

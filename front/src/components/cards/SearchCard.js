@@ -1,4 +1,4 @@
-import Input from '../Input';
+import Input from '../utils/Input';
 
 const SearchCard = ({ btnStyle, className, text }) => {
   return (

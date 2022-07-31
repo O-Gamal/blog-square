@@ -4,7 +4,7 @@ import { convertToHTML } from 'draft-convert';
 import parse from 'html-react-parser';
 import ArticleSetup from '../components/ArticleSetup';
 
-const AddArticle = () => {
+const AddArticlePage = () => {
   const [editorState, setEditorState] = useState(() =>
     editorStateFromRaw(null)
   );
@@ -41,4 +41,4 @@ const AddArticle = () => {
   );
 };
 
-export default AddArticle;
+export default AddArticlePage;

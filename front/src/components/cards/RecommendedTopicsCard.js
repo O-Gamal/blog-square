@@ -1,10 +1,10 @@
-import TagsContainer from '../TagsContainer';
+import Tags from '../Tags';
 
 const RecommendedTopicsCard = () => {
   return (
     <div className='recommended-topics-card-container'>
-      <h4>Recommended Topics</h4>
-      <TagsContainer />
+      <h5>Recommended Topics</h5>
+      <Tags />
     </div>
   );
 };

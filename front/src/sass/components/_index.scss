@@ -1,9 +1,10 @@
-@forward 'header';
-@forward 'recommendedTopics';
 @forward 'button';
 @forward 'input';
 @forward 'tag';
 @forward 'nav';
+@forward 'articles';
+
+//cards
 @forward './cards/searchCard';
 @forward './cards/authCard';
 @forward './cards/recommendedTopicsCard';
@@ -11,3 +12,6 @@
 @forward './cards/trendingArticlesCard';
 @forward './cards/footerCard';
 @forward './cards/authorCard';
+@forward './cards/commentsCard';
+@forward './cards/readNextCard';
+@forward './cards/userCard';

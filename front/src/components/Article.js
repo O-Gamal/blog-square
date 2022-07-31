@@ -1,83 +1,29 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import moment from 'moment';
+import { RiBookmarkLine } from 'react-icons/ri';
+import parse from 'html-react-parser';
 
-const Article = ({ articleId, size }) => {
-  const [article, setArticle] = useState({});
-  const [readTime, setReadTime] = useState();
-
-  useEffect(() => {
-    const calcReadTime = async (text) => {
-      const wpm = 225;
-      const words = await text.trim().split(' ').length;
-      const time = Math.ceil(words / wpm);
-      setReadTime(time);
-    };
-    const fechArticle = async () => {
-      const { data } = await axios.get(`/api/articles/${articleId}`);
-      setArticle(data);
-      calcReadTime(article.body);
-    };
-
-    fechArticle();
-  }, []);
-
-  const bodySnippet =
-    typeof article.body === 'string' ? article.body.substring(0, 200) : '';
-
+const Article = ({ article }) => {
   return (
-    <div
-      className={
-        size === 'sm' || size === 'xsm'
-          ? 'container card flex horizontal article'
-          : 'container card flex column article'
-      }
-    >
-      {article.image && (
-        <Link to={`/article/${article._id}`} className='link'>
-          <img src={article.image} alt={article.title} />
-        </Link>
-      )}
-      {size === 'lg' && (
-        <div className='flex meta-container'>
-          <div className='flex column'>
-            <div className='flex meta'>
-              <span className='meta-elem'>{readTime}</span>
-              <div className='meta-elem'>
-                <span className='material-symbols-outlined'>comment</span>
-                {article.comments && (
-                  <span>{article.comments.length} comments</span>
-                )}
-              </div>
-            </div>
-            <div className='flex tags-container'>
-              {article.tags &&
-                article.tags.map((tag) => (
-                  <span key={tag} className='tag'>
-                    {tag}
-                  </span>
-                ))}
-            </div>
-          </div>
-          <span className='bookmark material-symbols-outlined'>bookmark</span>
+    <article className='article-container'>
+      {article.image && <img className='article-img' src={article.image} />}
+      <div className='article-page-top-area'>
+        <div className='article-meta'>
+          <h5 className='meta-elem'>
+            Published <span>{moment(article.updatedAt).fromNow()}</span>
+          </h5>
+          <h5 className='meta-elem'>
+            Read Time <span>11 Minutes</span>
+          </h5>
         </div>
-      )}
-      <Link to={`/article/${article._id}`} className='link'>
-        <div className='content-container'>
-          <h3 className='title'>{article.title}</h3>
-          {size !== 'xsm' && <p>{bodySnippet} ...</p>}
-        </div>
-      </Link>
-      {size === 'lg' && (
-        <div className='footer-container flex'>
-          <span className='author'>by {article.authorId}</span>
-          <div className='meta-elem'>
-            <span className='material-symbols-outlined'>schedule</span>
-            <span>{article.updatedAt}</span>
-          </div>
-        </div>
-      )}
-    </div>
+        <RiBookmarkLine className='bookmark-icon' size={'2.5rem'} />
+      </div>
+      <div className='article-title-container'>
+        <h2>{article.title}</h2>
+      </div>
+      <div className='article-body-container'>
+        {article.body && parse(article.body)}
+      </div>
+    </article>
   );
 };
 

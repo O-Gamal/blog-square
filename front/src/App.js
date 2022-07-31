@@ -1,24 +1,29 @@
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './layouts/HomePage';
-import ArticlePage from './layouts/ArticlePage';
-import AddArticle from './layouts/AddArticle';
-import EditArticle from './layouts/EditArticle';
-import ErrorPage from './layouts/ErrorPage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import HomePage from './pages/HomePage';
+import ArticlePage from './pages/ArticlePage';
+import AddArticlePage from './pages/AddArticlePage';
+import EditArticlePage from './pages/EditArticlePage';
+import ErrorPage from './pages/ErrorPage';
 import Layout from './components/Layout';
 
 const App = () => {
   return (
-    <Routes>
-      <Route path='/' element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path='article'>
-          <Route index element={<AddArticle />} />
-          <Route path=':articleId' element={<ArticlePage />} />
-          <Route path='edit/:articleId' element={<EditArticle />} />
+    <>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path='article'>
+            <Route index element={<AddArticlePage />} />
+            <Route path=':articleId' element={<ArticlePage />} />
+            <Route path='edit/:articleId' element={<EditArticlePage />} />
+          </Route>
         </Route>
-      </Route>
-      <Route path='*' element={<ErrorPage />} />
-    </Routes>
+        <Route path='*' element={<ErrorPage />} />
+      </Routes>
+      <ToastContainer />
+    </>
   );
 };
 

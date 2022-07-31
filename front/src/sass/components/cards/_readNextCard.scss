@@ -1,0 +1,31 @@
+@use '../../utils/' as *;
+
+.read-next {
+  background-color: var(--light-pink);
+  .read-next-container {
+    padding-bottom: rem(100);
+    h5 {
+      margin: 0;
+      margin-bottom: rem(40);
+    }
+  }
+
+  .article-title-only {
+    h4 {
+      transition: all 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+        color: var(--gray-800);
+        margin-left: rem(2);
+      }
+    }
+  }
+
+  hr {
+    width: 50%;
+    margin: rem(30) 0;
+    border-top: 2px solid var(--gray-500);
+  }
+}

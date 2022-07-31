@@ -1,19 +1,36 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import Button from '../Button';
+import Button from '../utils/Button';
 import ArticleCard from './ArticleCard';
+import { ThreeDots } from 'react-loader-spinner';
+import { useSelector } from 'react-redux';
+import {
+  getArticles,
+  getArticlesStatus,
+  getArticlesError,
+} from '../../state/articlesSlice';
 
 const AuthorCard = () => {
-  const [articles, setArticles] = useState([]);
+  const articles = useSelector(getArticles);
+  const articlesStatus = useSelector(getArticlesStatus);
+  const articlesError = useSelector(getArticlesError);
 
-  useEffect(() => {
-    const fechArticles = async () => {
-      const { data } = await axios.get(`/api/articles/`);
-      setArticles(data);
-    };
-
-    fechArticles();
-  }, []);
+  let content;
+  if (articlesStatus === 'loading') {
+    content = (
+      <div>
+        <ThreeDots color='rgb(32, 32, 32)' wrapperClass='spinner' />
+      </div>
+    );
+  } else if (articlesStatus === 'failed') {
+    content = <div>Error {articlesError}</div>;
+  } else if (articlesStatus === 'succeeded') {
+    content = articles.map((singleArticle) => (
+      <ArticleCard
+        minimalCard
+        key={singleArticle._id}
+        article={singleArticle}
+      />
+    ));
+  }
 
   return (
     <div className='author-card-container'>
@@ -25,17 +42,8 @@ const AuthorCard = () => {
         </Button>
       </div>
       <div>
-        <h5>More from Omar</h5>
-        {articles.length ? (
-          <>
-            <ArticleCard minimalCard article={articles[0]} />
-            <ArticleCard minimalCard article={articles[1]} />
-            <ArticleCard minimalCard article={articles[2]} />
-            <ArticleCard minimalCard article={articles[3]} />
-          </>
-        ) : (
-          <div>Loading ...</div>
-        )}
+        <h5 className='more-articles-title'>More from Omar</h5>
+        {content}
       </div>
     </div>
   );

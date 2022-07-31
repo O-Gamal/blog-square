@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux';
+import ArticleCard from './cards/ArticleCard';
 import { ThreeDots } from 'react-loader-spinner';
 import {
   getArticles,
-  getArticlesError,
   getArticlesStatus,
-} from '../../state/articlesSlice';
+  getArticlesError,
+} from '../state/articlesSlice';
 
-const ReadNextCard = ({ article }) => {
+const Articles = () => {
   const articles = useSelector(getArticles);
   const articlesStatus = useSelector(getArticlesStatus);
   const articlesError = useSelector(getArticlesError);
@@ -20,21 +21,13 @@ const ReadNextCard = ({ article }) => {
     );
   } else if (articlesStatus === 'failed') {
     content = <div>Error {articlesError}</div>;
-  } else {
+  } else if (articlesStatus === 'succeeded') {
     content = articles.map((singleArticle) => (
-      <div key={singleArticle._id} className='article-title-only'>
-        <h4>{singleArticle.title}</h4>
-        <hr />
-      </div>
+      <ArticleCard key={singleArticle._id} article={singleArticle} />
     ));
   }
 
-  return (
-    <div className='read-next-container'>
-      <h5>Read Next:</h5>
-      {content}
-    </div>
-  );
+  return <div className='articles-list-container'>{content}</div>;
 };
 
-export default ReadNextCard;
+export default Articles;
