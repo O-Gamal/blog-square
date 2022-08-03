@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  min-height: 150vh;
+  // min-height: 150vh;
   max-width: rem(1170);
   margin: 0 auto;
   background-color: var(--primary-white);
@@ -43,14 +43,15 @@ body {
 }
 
 img {
-  // object-fit: cover;
-  // width: 100%;
-  // object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .error {
   color: rgb(255, 31, 31);
-  margin-top: rem(20);
+  display: block;
+  margin-bottom: rem(10);
+  text-align: center;
 }
 
 .card {

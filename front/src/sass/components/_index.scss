@@ -3,10 +3,12 @@
 @forward 'tag';
 @forward 'nav';
 @forward 'articles';
+@forward './auth';
+@forward './userSettings';
+@forward './richTextEditor';
 
 //cards
 @forward './cards/searchCard';
-@forward './cards/authCard';
 @forward './cards/recommendedTopicsCard';
 @forward './cards/articleCard';
 @forward './cards/trendingArticlesCard';

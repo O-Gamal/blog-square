@@ -25,28 +25,6 @@ const articlesSlice = createSlice({
   name: 'articles',
   initialState,
   reducers: {},
-  //   addArticle: {
-  //     reducer: (state, action) => {
-  //       state.articles.push(action.payload);
-  //     },
-  //     prepare: (title, body, userId) => ({
-  //       payload: {
-  //         id: nanoid(),
-  //         title,
-  //         body,
-  //         userId,
-  //         date: new Date().toISOString(),
-  //         likesCount: 0,
-  //       },
-  //     }),
-  //   },
-  //   likePost: (state, action) => {
-  //     const post = state.posts.find((post) => post.id === action.payload);
-  //     if (post) {
-  //       post.likesCount += 1;
-  //     }
-  //   },
-  // },
   extraReducers: (builder) => {
     builder
       .addCase(fetchArticles.pending, (state, action) => {

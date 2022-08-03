@@ -14,7 +14,8 @@ import {
   getUser,
   getUserError,
   getUserStatus,
-} from '../state/userSlice';
+  getUserProfile,
+} from '../state/authSlice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -33,7 +34,7 @@ const Login = () => {
       navigate('/');
     }
     dispatch(reset());
-  }, []);
+  }, [userStatus, dispatch, user]);
 
   const handleLogin = (e) => {
     e.preventDefault();

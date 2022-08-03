@@ -1,41 +1,39 @@
 @use '../utils' as *;
 
-.btn-container {
-  .button {
-    border-radius: rem(50);
-    padding: rem(12) rem(24);
-    color: white;
-    font-weight: 500;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    font-size: rem(18);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.button {
+  border-radius: rem(50);
+  padding: rem(12) rem(24);
+  color: white;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: rem(18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover,
+  :focus-visible {
+    transform: scale(1.005);
+  }
+
+  &.primary {
+    background-color: var(--primary-black);
 
     &:hover,
     :focus-visible {
-      transform: scale(1.005);
+      background-color: var(--gray-900);
     }
+  }
+  &.secondary {
+    background-color: var(--primary-white);
+    color: var(--primary-black);
 
-    &.primary {
-      background-color: var(--primary-black);
-
-      &:hover,
-      :focus-visible {
-        background-color: var(--gray-900);
-      }
-    }
-    &.secondary {
-      background-color: var(--primary-white);
-      color: var(--primary-black);
-
-      & :hover,
-      :focus-visible {
-        background-color: white;
-      }
+    & :hover,
+    :focus-visible {
+      background-color: white;
     }
   }
 }

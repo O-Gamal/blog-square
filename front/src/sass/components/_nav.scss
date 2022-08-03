@@ -20,4 +20,19 @@
       background-color: var(--gray-100);
     }
   }
+
+  .user-name {
+    margin: 0;
+    background-color: var(--gray-100);
+    padding: rem(8) rem(20);
+    border-radius: rem(12);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--gray-200);
+      transform: scale(1.01);
+    }
+  }
 }

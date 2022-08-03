@@ -1,12 +1,20 @@
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Button from '../utils/Button';
-import { logoutUser, reset } from '../../state/userSlice';
+import { ThreeDots } from 'react-loader-spinner';
+import { logoutUser, reset, getUserStatus } from '../../state/authSlice';
+
+import { updateCurrentTap } from '../../state/userSlice';
 import { IoSettings, IoLogOut } from 'react-icons/io5';
 
-const UserCard = ({ user }) => {
+const UserCard = ({ userProfile }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userStatus = useSelector(getUserStatus);
+
+  useEffect(() => {
+    if (userProfile) dispatch(reset());
+  }, [dispatch, userProfile]);
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -14,27 +22,31 @@ const UserCard = ({ user }) => {
     navigate('/');
   };
 
-  console.log(user);
+  if (userStatus === 'loading')
+    return <ThreeDots color='rgb(32, 32, 32)' wrapperClass='spinner' />;
+
   return (
     <div className='user-panel-card-container'>
       <div className='user-card-header'>
-        <h3>Hello {user.name}</h3>
+        <h3 className='user-name' onClick={() => navigate('/profile')}>
+          {userProfile.name}
+        </h3>
         <div className='user-btns'>
-          <IoSettings size='1.8rem' className='settings-icon icon' />
+          <IoSettings
+            size='1.5rem'
+            className='settings-icon icon'
+            onClick={() => dispatch(updateCurrentTap('settings'))}
+          />
           <IoLogOut
-            size='2rem'
+            size='1.8rem'
             className='settings-icon icon'
             onClick={handleLogout}
           />
         </div>
       </div>
-      <div className='profile-info'>
-        <p>
-          Following <span>{user.following && user.following.length}</span>{' '}
-        </p>
-        <p>
-          Followers <span>{user.followers && user.followers.length}</span>{' '}
-        </p>
+      <div className='user-follow-info'>
+        <span>{userProfile && userProfile.following.length} Following</span>
+        <span>{userProfile && userProfile.followers.length} Followers</span>
       </div>
     </div>
   );

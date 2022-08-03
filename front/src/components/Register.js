@@ -11,7 +11,7 @@ import {
   getUser,
   getUserError,
   getUserStatus,
-} from '../state/userSlice';
+} from '../state/authSlice';
 import appleLogo from '../assets/icons/apple.svg';
 import facebookLogo from '../assets/icons/facebook.svg';
 import googleLogo from '../assets/icons/google.svg';

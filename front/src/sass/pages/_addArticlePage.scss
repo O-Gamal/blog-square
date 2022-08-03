@@ -1,25 +1,51 @@
 @use '../utils/' as *;
 
-.text-editor-container {
-  background-color: var(--light-gray-color);
-  padding: 5vh 20vw;
+.add-article-page {
+  padding: 0 !important;
+  padding-top: 5vh;
+
+  .add-article-card-container {
+    width: rem(1170);
+
+    .article-setup-card {
+      width: 100%;
+      background-color: var(--light-green);
+      margin-bottom: rem(30);
+    }
+  }
+
+  .text-editor-container {
+    background-color: var(--primary-white);
+    margin-bottom: rem(30);
+    min-height: 20vh;
+    overflow: visible;
+  }
+
+  hr {
+    border-top: 2px solid var(--primary-black);
+    margin-bottom: rem(20);
+  }
+
+  .buttons-container {
+    display: flex;
+    gap: rem(10);
+
+    .delete-img-btn {
+      background-color: transparent;
+      border: 1px solid var(--primary-black);
+    }
+  }
 }
 
 .article-setup-form {
+  display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: rem(30);
 
   .title-input {
     height: fit-content;
     font-weight: 700;
     color: var(--dark-color);
-  }
-
-  input {
-    font-size: rem(20);
-    border-bottom: 1px solid var(--gray-color);
-    padding: rem(5) rem(10);
-    max-width: 90%;
-    margin-top: rem(30);
   }
 
   .img-input-span {
@@ -32,8 +58,51 @@
   }
 
   .left-col-setup {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+
+    .inputs-container {
+      display: flex;
+      flex-direction: column;
+      gap: rem(10);
+
+      label {
+        text-align: left;
+      }
+    }
+  }
+
+  .right-col-setup {
+    h5 {
+      margin-bottom: rem(10);
+    }
+  }
+}
+
+.ReactTags__tagInputField {
+  border-radius: rem(50);
+  padding: rem(12) rem(24);
+  color: var(--primary-black) !important;
+  border: 1px solid var(--gray-500);
+  outline: none;
+  font-size: rem(18);
+  border-radius: rem(14);
+  background-color: rgba($color: #ffffff, $alpha: 0.6);
+  transition: all 0.2s;
+  width: 100%;
+
+  &.rounded {
+    border-radius: rem(50);
+    min-height: rem(72);
+  }
+
+  &:focus,
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: rgb(201, 229, 255) 3px 3px 6px 0px inset,
+      rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
 }
 
@@ -43,7 +112,7 @@
 
 .ReactTags__tagInputField {
   margin-bottom: rem(10);
-  color: var(--gray-color);
+  color: var(--gray-500);
 }
 
 .ReactTags__selected {
@@ -56,33 +125,37 @@
 }
 
 .ReactTags__selected .ReactTags__tag {
-  border: 1px solid #c7c7c7;
-  background-color: var(--light-gray-color);
-  padding: 0 rem(5);
-  border-radius: rem(5);
-  transition: border, transform 0.2s;
+  border: 1px solid var(--gray-500);
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  padding-left: rem(10);
+  border-radius: 50px;
+  transition: all 0.2s;
+  cursor: pointer !important;
 
   &:hover {
-    border: 1px solid var(--dark-color);
+    border: 1px solid var(--primary-black);
     transform: scale(1.01);
   }
 }
 
 .ReactTags__selected .ReactTags__remove {
   background-color: transparent;
-  color: var(--dark-color);
+  color: var(--primary-white);
+  font-size: rem(16);
   box-shadow: none;
   width: rem(30);
   height: rem(30);
-  margin: 0 0 0 rem(5);
-  padding: 0;
   outline: none;
+  border: none;
+  cursor: pointer !important;
 }
 
 .upload-img-area {
-  border: rem(2) dashed var(--gray-color);
-  color: var(--gray-color);
-  background-color: var(--light-gray-color);
+  display: flex;
+  border: rem(2) dashed var(--gray-500);
+  color: var(--gray-500);
+  background-color: var(--gray-100);
   border-radius: rem(10);
   min-height: rem(250);
   width: 100%;
@@ -91,10 +164,10 @@
   text-align: center;
   padding: rem(10);
   cursor: pointer;
-  transition: background-color, box-shadow 0.2s;
+  transition: all 0.2s;
 
   &:hover {
-    background-color: #e7e7e7;
+    background-color: var(--gray-200);
     box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
       rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   }

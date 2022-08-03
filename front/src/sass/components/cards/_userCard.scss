@@ -1,37 +1,50 @@
 @use '../../utils/' as *;
 
 .user-panel-card-container {
+  .icon {
+    color: var(--light-blue);
+  }
   .user-card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 
     .user-btns {
-      padding: rem(10) 0;
+      padding: rem(5) 0;
       display: flex;
       color: var(--gray-800);
     }
 
-    h3 {
-      margin-bottom: rem(18);
+    .user-name {
+      color: var(--primary-white);
+      cursor: pointer;
     }
   }
 
   .profile-info {
     display: flex;
-    gap: rem(30);
+    gap: rem(20);
     color: var(--gray-600);
 
     p {
       font-weight: 600;
-    }
-
-    span {
-      display: block;
+      color: var(--primary-white);
     }
   }
+}
 
-  .logout {
-    padding: rem(5);
+.user-follow-info {
+  display: flex;
+  align-items: center;
+  gap: rem(10);
+  margin-top: rem(10);
+
+  span {
+    color: var(--primary-white);
+    font-size: rem(18);
+    background-color: var(--gray);
+    padding: rem(5) rem(15);
+    border-radius: 50px;
+    cursor: pointer;
   }
 }

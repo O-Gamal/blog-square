@@ -27,10 +27,10 @@ const ArticlePage = () => {
       </header>
       <section className='article-page'>
         <div className='article-page-container'>
-          <div className='card h4 go-back-btn' onClick={() => navigate('/')}>
+          {/* <div className='card h4 go-back-btn' onClick={() => navigate('/')}>
             <IoArrowBackSharp />
             Home
-          </div>
+          </div> */}
           {article ? (
             <>
               <div className='article'>

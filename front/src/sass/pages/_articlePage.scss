@@ -43,7 +43,7 @@
     }
 
     .article-page-top-area {
-      padding: 0 rem(30);
+      padding: rem(30) rem(30);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -58,6 +58,7 @@
         h5 {
           font-size: rem(22);
           font-weight: 600;
+          margin: 0;
 
           span {
             font-size: rem(18);

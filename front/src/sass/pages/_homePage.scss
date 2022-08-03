@@ -15,9 +15,15 @@
       grid-row: 2/3;
     }
 
-    .auth-card {
+    .user-updated-home-container {
+      height: 100%;
       grid-row: 1/4;
       grid-column: 2;
+
+      .multi-func-card {
+        background-color: var(--light-blue);
+        height: 100%;
+      }
     }
 
     .search-card {
@@ -42,13 +48,37 @@
     }
 
     .user-panel-card {
-      background-color: var(--light-blue);
+      background-color: var(--primary-black);
+    }
+
+    .write-new-article-btn {
+      background-color: var(--primary-black);
+      color: var(--primary-white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--gray-950);
+        transform: scale(1.005);
+      }
     }
   }
 
   .logged-in {
-    .auth-card {
+    .user-updated-home-container {
+      height: 100%;
       grid-row: 2/4;
+      display: grid;
+      grid-template-rows: 1fr 6fr;
+      gap: rem(30);
+    }
+
+    .write-new-article-btn {
+      padding: rem(10);
     }
   }
 }

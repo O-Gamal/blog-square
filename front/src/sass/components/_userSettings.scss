@@ -1,0 +1,15 @@
+@use '../utils/' as *;
+
+.user-settings-card-container {
+  label {
+    display: block;
+    padding: rem(5) rem(10);
+    text-align: left;
+  }
+  .inputs-container {
+    margin-bottom: rem(20);
+  }
+  .update-settings-btn {
+    margin-bottom: rem(10);
+  }
+}

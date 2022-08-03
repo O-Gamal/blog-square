@@ -1,0 +1,58 @@
+@use '../utils/' as *;
+
+.rich-text-container {
+  position: relative;
+  overflow: visible;
+
+  .wmde-markdown-var {
+    box-shadow: none;
+    background-color: transparent;
+
+    .w-md-editor-toolbar {
+      position: sticky !important;
+      top: rem(20);
+      border: none;
+      padding: rem(20);
+      height: rem(50);
+      background-color: var(--light-gray);
+      border-radius: 50px;
+      width: fit-content;
+      margin-bottom: rem(20);
+
+      :first-child {
+        li button {
+          cursor: pointer;
+
+          &:hover,
+          &:focus-visible {
+            color: var(--gray-700) !important;
+          }
+        }
+      }
+    }
+
+    .w-md-editor-content,
+    .wmde-markdown-color,
+    textarea {
+      * {
+        font-size: rem(20) !important;
+        line-height: rem(22);
+      }
+    }
+  }
+
+  .btns-container {
+    display: flex;
+    gap: rem(10);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: rem(40);
+  }
+
+  .wmde-markdown {
+    background-color: transparent;
+    padding-top: rem(80);
+    overflow: auto;
+  }
+}

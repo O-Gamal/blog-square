@@ -1,0 +1,35 @@
+@use '../utils/' as *;
+
+.user-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: rem(30);
+  margin-bottom: rem(30);
+
+  .user-header-card {
+    background-color: var(--primary-black);
+    color: var(--primary-white);
+    text-align: center;
+  }
+
+  .user-follow-info {
+    justify-content: center;
+  }
+
+  .user-connection-card {
+    background-color: var(--primary-black);
+    background-color: var(--light-blue);
+
+    .user-follow-btns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: rem(20);
+
+      .email-btn {
+        background-color: transparent !important;
+        border: 1px solid var(--primary-black);
+      }
+    }
+  }
+}

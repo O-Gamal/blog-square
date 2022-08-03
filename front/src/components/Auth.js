@@ -1,31 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Login from '../Login';
-import Register from '../Register';
-import { useSelector } from 'react-redux';
-import { getUser } from '../../state/userSlice';
+import Login from './Login';
+import Register from './Register';
 
-const AuthCard = () => {
+const Auth = () => {
   const [activeTap, setActiveTap] = useState('signin');
-  const user = useSelector(getUser);
 
-  if (user) {
-    return (
-      <motion.div layout='position' className='latest-bookmarks-card-container'>
-        <h5>Latest Bookmarks</h5>
-        {user.bookmarks ? (
-          user.bookmarks.map((singleArticle) => (
-            <div key={singleArticle._id} className='article-title-only'>
-              <h4>{singleArticle.title}</h4>
-              <hr />
-            </div>
-          ))
-        ) : (
-          <p>Your did not save any articles yet</p>
-        )}
-      </motion.div>
-    );
-  }
   return (
     <motion.div layout='position' className='auth-card-container'>
       <div className='auth-nav'>
@@ -84,4 +64,4 @@ const AuthCard = () => {
   );
 };
 
-export default AuthCard;
+export default Auth;

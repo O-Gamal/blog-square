@@ -1,51 +1,12 @@
 import { useState } from 'react';
-import Modal from 'react-modal';
 import TagsInput from './TagsInput';
+import Button from './utils/Button';
+import Input from './utils/Input';
 
-const customStyles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(255, 255, 255, 0.90)',
-  },
-  content: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    background: '#fff',
-    border: 'none',
-    width: '75%',
-    minHeight: '50vh',
-    transform: 'translate(-50%, -50%)',
-    padding: '3rem',
-    boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
-  },
-};
-
-Modal.setAppElement('#root');
-
-const ArticleSetup = ({ doneWriting, setDoneWriting }) => {
+const ArticleSetup = () => {
   const [headerImg, setHeaderImg] = useState('');
-
-  //   const getBase64 = (file)  {
-  //     let document = "";
-  //     let reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload = function () {
-  //         document = reader.result;
-  //     };
-  //     reader.onerror = function (error) {
-  //         console.log('Error: ', error);
-  //     };
-
-  //     return document;
-  // }
+  const [title, setTitle] = useState('');
+  const [tags, setTags] = useState([]);
 
   const handleInputImg = (e) => {
     let files = e.target.files;
@@ -56,51 +17,68 @@ const ArticleSetup = ({ doneWriting, setDoneWriting }) => {
     };
   };
 
+  const handleReset = (e) => {
+    e.preventDefault();
+    setHeaderImg('');
+    setTitle('');
+    setTags([]);
+  };
+
   return (
-    <Modal
-      isOpen={doneWriting}
-      closeTimeoutMS={100}
-      onRequestClose={() => setDoneWriting(!doneWriting)}
-      style={customStyles}
-      contentLabel='Article Setup'
-    >
-      <div className={'ReactModal'}>
-        <h3>Article Setup</h3>
-        <form className='grid article-setup-form'>
-          <div className='flex column left-col-setup'>
-            <div className='full-width'>
-              <input
-                type='text'
-                className='title-input'
-                placeholder='Write a preview title...'
-              />
-              <TagsInput />
-            </div>
-            <button className='publish-btn'>Publish</button>
-          </div>
-          <div>
-            <h4>Header Image</h4>
-            <label htmlFor='img-input' className='flex upload-img-area'>
-              {headerImg ? (
-                <img src={headerImg} alt='header img' />
-              ) : (
-                <span className='img-input-span'>
-                  Include a high-quality image in your story to make it more
-                  inviting to readers
-                </span>
-              )}
+    <div className='card article-setup-card'>
+      <h3>Article Setup</h3>
+      <hr />
+      <form className='article-setup-form'>
+        <div className='left-col-setup'>
+          <div className='full-width inputs-container'>
+            <label className='h5'>
+              Enter Your article title and related tags bellow:
             </label>
-            <input
-              id='img-input'
-              type='file'
-              name='photo'
-              onChange={handleInputImg}
-              style={{ display: 'none' }}
+            <Input
+              type='text'
+              className='title-input'
+              placeholder='Write a preview title...'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
+            <TagsInput tags={tags} setTags={setTags} />
           </div>
-        </form>
-      </div>
-    </Modal>
+          <div className='buttons-container'>
+            <Button className='primary publish-btn' width='16rem'>
+              Publish
+            </Button>
+            <Button
+              className='secondary delete-img-btn'
+              width='fit-content'
+              onClick={handleReset}
+            >
+              reset
+            </Button>
+          </div>
+        </div>
+        <div className='right-col-setup'>
+          <h5>Header Image</h5>
+
+          <label htmlFor='img-input' className='upload-img-area'>
+            {headerImg ? (
+              <img src={headerImg} alt='header img' />
+            ) : (
+              <span className='img-input-span'>
+                Include a high-quality image in your story to make it more
+                inviting to readers
+              </span>
+            )}
+          </label>
+          <input
+            id='img-input'
+            type='file'
+            name='photo'
+            onChange={handleInputImg}
+            style={{ display: 'none' }}
+          />
+        </div>
+      </form>
+    </div>
   );
 };
 
