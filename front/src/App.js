@@ -4,7 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/HomePage';
 import ArticlePage from './pages/ArticlePage';
 import AddArticlePage from './pages/AddArticlePage';
-import EditArticlePage from './pages/EditArticlePage';
 import UserPage from './pages/UserPage';
 import ErrorPage from './pages/ErrorPage';
 import Layout from './components/Layout';
@@ -18,7 +17,6 @@ const App = () => {
           <Route path='article'>
             <Route index element={<AddArticlePage />} />
             <Route path=':articleId' element={<ArticlePage />} />
-            <Route path='edit/:articleId' element={<EditArticlePage />} />
           </Route>
           <Route path='profile' element={<UserPage />} />
         </Route>

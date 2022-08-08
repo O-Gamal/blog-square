@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SearchCard from '../components/cards/SearchCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { IoAdd } from 'react-icons/io5';
+import { ThreeDots } from 'react-loader-spinner';
 import MultiFunCard from '../components/cards/MultiFunCard';
 import RecommendedTopicsCard from '../components/cards/RecommendedTopicsCard';
 import Articles from '../components/Articles';
@@ -10,28 +11,50 @@ import TrendingArticlesCard from '../components/cards/TrendingArticlesCard';
 import Logo from '../components/Logo';
 import UserCard from '../components/cards/UserCard';
 import { motion } from 'framer-motion';
-
-import { getUser, getUserProfile, getUserInfo } from '../state/authSlice';
+import {
+  getProfile,
+  getUser,
+  getUserProfile,
+  getUserStatus,
+} from '../state/authSlice';
+import {
+  getBookmarks,
+  getFollowings,
+  getFollowers,
+  getUserFollowers,
+  getUserFollowings,
+  getStatus,
+} from '../state/userSlice';
 
 const HomePage = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector(getUser);
 
   useEffect(() => {
-    if (user) dispatch(getUserProfile());
+    if (user) {
+      dispatch(getProfile());
+      dispatch(getBookmarks());
+      dispatch(getFollowings());
+      dispatch(getFollowers());
+    }
   }, [user, dispatch]);
 
-  const userProfile = useSelector(getUserInfo);
+  const profile = useSelector(getUserProfile);
+  const userStatus = useSelector(getUserStatus);
+  const status = useSelector(getStatus);
+
+  if (userStatus === 'loading')
+    return <ThreeDots color='rgb(32, 32, 32)' wrapperClass='spinner' />;
 
   return (
     <div className='home'>
       <div className={`home-container ${user ? 'logged-in' : ''}`}>
-        <section className='home-header'>
+        <header className='home-header'>
           <Logo />
           <h3>The ultimate modern blog app for creators.</h3>
-        </section>
-        {user && userProfile && (
+        </header>
+        {user && profile && (
           <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -43,7 +66,7 @@ const HomePage = () => {
             }}
             className='card user-panel-card'
           >
-            <UserCard userProfile={userProfile} />
+            <UserCard profile={profile} />
           </motion.section>
         )}
 
@@ -55,26 +78,28 @@ const HomePage = () => {
           <SearchCard />
         </section>
         <section className='user-updated-home-container'>
-          {user && userProfile && (
-            <section
+          {user && profile && (
+            <div
               className='card h4 write-new-article-btn'
               onClick={() => navigate('/article')}
             >
               <IoAdd />
               Wrtie a new article
-            </section>
+            </div>
           )}
-          <motion.section
-            transition={{
-              ease: 'easeOut',
-              type: 'spring',
-              duration: 0.5,
-            }}
-            layout='position'
-            className='card multi-func-card'
-          >
-            <MultiFunCard userProfile={userProfile} />
-          </motion.section>
+          {user && profile && (
+            <motion.section
+              transition={{
+                ease: 'easeOut',
+                type: 'spring',
+                duration: 0.5,
+              }}
+              layout='position'
+              className='card multi-func-card'
+            >
+              <MultiFunCard />
+            </motion.section>
+          )}
         </section>
 
         <section className='card recommended-topics-card'>

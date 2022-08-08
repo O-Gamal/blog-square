@@ -1,10 +1,8 @@
 import { forwardRef, useState } from 'react';
 import MDEditor, { commands } from '@uiw/react-md-editor';
 import Button from './utils/Button';
-import ArticleSetup from './ArticleSetup';
 
-const RichTextEditor = forwardRef((ref) => {
-  const [content, setContent] = useState('');
+const RichTextEditor = ({ setArticleBody, articleBody }) => {
   const [contentPreview, setContentPreview] = useState('edit');
 
   return (
@@ -13,8 +11,8 @@ const RichTextEditor = forwardRef((ref) => {
         <MDEditor
           placeholder='Wrtie something ...'
           visibleDragbar={false}
-          value={content}
-          onChange={setContent}
+          value={articleBody}
+          onChange={setArticleBody}
           preview={contentPreview}
           height='100%'
           commands={[
@@ -39,7 +37,7 @@ const RichTextEditor = forwardRef((ref) => {
           extraCommands={[]}
         />
       ) : (
-        <MDEditor.Markdown source={content} />
+        <MDEditor.Markdown source={articleBody} />
       )}
       <div className='btns-container'>
         <Button
@@ -54,6 +52,6 @@ const RichTextEditor = forwardRef((ref) => {
       </div>
     </div>
   );
-});
+};
 
 export default RichTextEditor;

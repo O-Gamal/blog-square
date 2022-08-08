@@ -42,6 +42,14 @@
       }
     }
 
+    .wmde-markdown {
+      background-color: transparent;
+
+      pre {
+        background-color: var(--gray-100);
+      }
+    }
+
     .article-page-top-area {
       padding: rem(30) rem(30);
       display: flex;

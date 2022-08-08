@@ -1,23 +1,8 @@
 import mongoose from 'mongoose';
 
-const commentSchema = mongoose.Schema(
-  {
-    user: {
-      type: mongoose.Types.ObjectId,
-      required: true,
-      ref: 'User',
-    },
-    comment: {
-      type: String,
-      required: true,
-    },
-  },
-  { timestamps: true }
-);
-
 const tagSchema = mongoose.Schema(
   {
-    name: {
+    text: {
       type: String,
       required: true,
     },
@@ -52,8 +37,9 @@ const articleSchema = mongoose.Schema(
       default: [],
     },
     comments: {
-      type: [commentSchema],
+      type: [mongoose.Types.ObjectId],
       default: [],
+      ref: 'Comment',
     },
   },
   {

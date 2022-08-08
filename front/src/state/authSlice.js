@@ -7,12 +7,12 @@ const user = JSON.parse(localStorage.getItem('user'));
 
 const initialState = {
   user: user ? user : null,
-  userProfile: null,
+  profile: null,
   status: 'idle',
   error: null,
 };
 
-export const getUserProfile = createAsyncThunk(
+export const getProfile = createAsyncThunk(
   'user/getProfile',
   async (_, thunkAPI) => {
     try {
@@ -38,7 +38,7 @@ export const getUserProfile = createAsyncThunk(
   }
 );
 
-export const updateUserProfile = createAsyncThunk(
+export const updateProfile = createAsyncThunk(
   'user/updateProfile',
   async (user, thunkAPI) => {
     try {
@@ -149,21 +149,21 @@ const authSlice = createSlice({
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.user = null;
-        state.userProfile = null;
+        state.profile = null;
       })
-      .addCase(getUserProfile.pending, (state, action) => {
+      .addCase(getProfile.pending, (state, action) => {
         state.status = 'loading';
       })
-      .addCase(getUserProfile.fulfilled, (state, action) => {
+      .addCase(getProfile.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.userProfile = action.payload;
+        state.profile = action.payload;
       })
-      .addCase(updateUserProfile.pending, (state, action) => {
+      .addCase(updateProfile.pending, (state, action) => {
         state.status = 'loading';
       })
-      .addCase(updateUserProfile.fulfilled, (state, action) => {
+      .addCase(updateProfile.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.userProfile = action.payload;
+        state.profile = action.payload;
       });
   },
 });
@@ -171,7 +171,7 @@ const authSlice = createSlice({
 export const getUser = (state) => state.auth.user;
 export const getUserStatus = (state) => state.auth.status;
 export const getUserError = (state) => state.auth.error;
-export const getUserInfo = (state) => state.auth.userProfile;
+export const getUserProfile = (state) => state.auth.profile;
 
 export const { reset } = authSlice.actions;
 export default authSlice.reducer;

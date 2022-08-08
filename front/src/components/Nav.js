@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Logo from './Logo';
-import { getUserInfo } from '../state/authSlice';
+import { getUserProfile } from '../state/authSlice';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const userProfile = useSelector(getUserInfo);
+  const userProfile = useSelector(getUserProfile);
 
   return (
     <nav className='nav'>

@@ -6,6 +6,8 @@
 @forward './auth';
 @forward './userSettings';
 @forward './richTextEditor';
+@forward './userBookmarks';
+@forward './userFollowingInfo';
 
 //cards
 @forward './cards/searchCard';

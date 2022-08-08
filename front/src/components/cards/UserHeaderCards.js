@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { getUserInfo } from '../../state/authSlice';
+import { getUserProfile } from '../../state/authSlice';
 import Button from '../utils/Button';
 
 const UserHeaderCards = () => {
-  const userProfile = useSelector(getUserInfo);
+  const userProfile = useSelector(getUserProfile);
 
   return (
     <>

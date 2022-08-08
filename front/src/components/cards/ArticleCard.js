@@ -36,7 +36,7 @@ const ArticleCard = ({ minimalCard, article }) => {
           {!minimalCard && (
             <div className='article-bottom-area'>
               {article.tags.map((singleTag) => (
-                <Tag key={singleTag} tag={singleTag} size='sm' />
+                <Tag key={singleTag._id} tag={singleTag.text} size='sm' />
               ))}
             </div>
           )}

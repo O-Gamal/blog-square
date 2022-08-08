@@ -1,20 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import {
+  addNewArticle,
+  getArticlesStatus,
+  getArticleId,
+  reset,
+} from '../state/articlesSlice';
 import TagsInput from './TagsInput';
 import Button from './utils/Button';
 import Input from './utils/Input';
 
-const ArticleSetup = () => {
+const ArticleSetup = ({ articleBody, setArticleBody }) => {
+  const dispatch = useDispatch();
   const [headerImg, setHeaderImg] = useState('');
   const [title, setTitle] = useState('');
   const [tags, setTags] = useState([]);
 
   const handleInputImg = (e) => {
-    let files = e.target.files;
-    let reader = new FileReader();
-    reader.readAsDataURL(files[0]);
-    reader.onload = (e) => {
-      setHeaderImg(e.target.result);
-    };
+    let files = e.target.files[0];
+    setHeaderImg(URL.createObjectURL(files));
+    // let reader = new FileReader();
+    // reader.readAsDataURL(files[0]);
+    // reader.onload = (e) => {
+    //   setHeaderImg(e.target.result);
+    // };
   };
 
   const handleReset = (e) => {
@@ -22,6 +33,17 @@ const ArticleSetup = () => {
     setHeaderImg('');
     setTitle('');
     setTags([]);
+  };
+
+  const handlePublish = (e) => {
+    e.preventDefault();
+
+    const article = { title, body: articleBody, tags, image: headerImg };
+    dispatch(addNewArticle(article));
+    // setArticleBody('');
+    // setTags([]);
+    // setTitle('');
+    // setHeaderImg('');
   };
 
   return (
@@ -44,7 +66,11 @@ const ArticleSetup = () => {
             <TagsInput tags={tags} setTags={setTags} />
           </div>
           <div className='buttons-container'>
-            <Button className='primary publish-btn' width='16rem'>
+            <Button
+              className='primary publish-btn'
+              width='16rem'
+              onClick={handlePublish}
+            >
               Publish
             </Button>
             <Button

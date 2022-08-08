@@ -14,7 +14,6 @@ import {
   getUser,
   getUserError,
   getUserStatus,
-  getUserProfile,
 } from '../state/authSlice';
 
 const Login = () => {
@@ -38,7 +37,6 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
     const userData = { email, password };
     dispatch(loginUser(userData));
   };

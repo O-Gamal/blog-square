@@ -15,7 +15,8 @@
       transition: all 0.2s;
       cursor: pointer;
 
-      &:hover {
+      &:hover,
+      &:focus-visible {
         text-decoration: underline;
         color: var(--gray-800);
         margin-left: rem(2);

@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { ThreeDots } from 'react-loader-spinner';
 import Button from './utils/Button';
 import Input from './utils/Input';
-import { updateUserProfile, getUserStatus } from '../state/authSlice';
+import { updateProfile, getUserStatus } from '../state/authSlice';
 import { updateCurrentTap } from '../state/userSlice';
 
-const UserSettings = ({ userProfile }) => {
-  const [name, setName] = useState(userProfile.name);
-  const [email, setEmail] = useState(userProfile.email);
+const UserSettings = ({ profile }) => {
+  const [name, setName] = useState(profile.name);
+  const [email, setEmail] = useState(profile.email);
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [message, setMessage] = useState('');
@@ -22,7 +22,7 @@ const UserSettings = ({ userProfile }) => {
     if (password !== password2) {
       setMessage('Passwords do not match!');
     } else {
-      dispatch(updateUserProfile({ ...userProfile, name, email, password }));
+      dispatch(updateProfile({ ...profile, name, email, password }));
       dispatch(updateCurrentTap('bookmarks'));
     }
   };
@@ -37,16 +37,6 @@ const UserSettings = ({ userProfile }) => {
       className='user-settings-card-container'
     >
       <h5>Profile Setting</h5>
-      {/* {userProfile.bookmarks.length ? (
-        userProfile.bookmarks.map((singleArticle) => (
-          <div key={singleArticle._id} className='article-title-only'>
-            <h4>{singleArticle.title}</h4>
-            <hr />
-          </div>
-        ))
-      ) : (
-        <p>Your did not save any articles yet</p>
-      )} */}
       <div className='inputs-container'>
         <label htmlFor='name'>update your name:</label>
         <Input

@@ -7,6 +7,7 @@
   .home-container {
     display: grid;
     grid-template-columns: rem(720) rem(420);
+    grid-template-rows: 0.5fr 1fr 1.5fr;
     gap: rem(30);
 
     max-width: rem(1170);
@@ -27,7 +28,8 @@
     }
 
     .search-card {
-      grid-row: 3;
+      max-height: rem(450);
+      grid-row: 3/4;
     }
 
     .recommended-topics-card {

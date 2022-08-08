@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { RiBookmarkLine } from 'react-icons/ri';
 import parse from 'html-react-parser';
+import MDEditor from '@uiw/react-md-editor';
 
 const Article = ({ article }) => {
   return (
@@ -21,7 +22,7 @@ const Article = ({ article }) => {
         <h2>{article.title}</h2>
       </div>
       <div className='article-body-container'>
-        {article.body && parse(article.body)}
+        {article.body && <MDEditor.Markdown source={article.body} />}
       </div>
     </article>
   );
