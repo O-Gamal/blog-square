@@ -1,9 +1,19 @@
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { RiBookmarkLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Tag from '../Tag';
+import { getUser, getUserById } from '../../state/userSlice';
 
 const ArticleCard = ({ minimalCard, article }) => {
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getUserById(article.authorId));
+  // }, [dispatch]);
+
+  // const author = useSelector(getUser);
+
   return (
     <div
       className={!minimalCard ? 'card article-card' : 'minimal article-card'}
@@ -21,7 +31,7 @@ const ArticleCard = ({ minimalCard, article }) => {
         <div className='article-content'>
           <div className='top-area'>
             <div className='article-meta'>
-              {!minimalCard && <span>by {article.authorId}</span>}
+              {!minimalCard && <span>by Test Name</span>}
               <span>Published {moment(article.updatedAt).fromNow()}</span>
             </div>
             {!minimalCard && (

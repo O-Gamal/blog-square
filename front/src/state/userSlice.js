@@ -5,6 +5,7 @@ const Users_URL = '/api/users/';
 
 const initialState = {
   currentTap: 'bookmarks',
+  user: null,
   bookmarks: null,
   followings: null,
   followers: null,
@@ -12,6 +13,24 @@ const initialState = {
   status: 'idle',
   error: null,
 };
+
+export const getUserById = createAsyncThunk(
+  'user/getUserById',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await axios.get(Users_URL + id);
+      return data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const followUser = createAsyncThunk(
   'user/followUser',
@@ -261,11 +280,24 @@ const userSlice = createSlice({
       .addCase(getFollowers.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
+      })
+      .addCase(getUserById.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(getUserById.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(getUserById.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
       });
   },
 });
 
 export const getCurrentTap = (state) => state.user.currentTap;
+export const getUser = (state) => state.user.user;
 export const getMessage = (state) => state.user.message;
 export const getError = (state) => state.user.error;
 export const getStatus = (state) => state.user.status;

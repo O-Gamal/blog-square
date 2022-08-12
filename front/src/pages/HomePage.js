@@ -16,6 +16,7 @@ import {
   getUser,
   getUserProfile,
   getUserStatus,
+  loginUser,
 } from '../state/authSlice';
 import {
   getBookmarks,
@@ -30,6 +31,10 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(getUser);
+
+  useEffect(() => {
+    document.title = 'BlogSquare';
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -87,19 +92,18 @@ const HomePage = () => {
               Wrtie a new article
             </div>
           )}
-          {user && profile && (
-            <motion.section
-              transition={{
-                ease: 'easeOut',
-                type: 'spring',
-                duration: 0.5,
-              }}
-              layout='position'
-              className='card multi-func-card'
-            >
-              <MultiFunCard />
-            </motion.section>
-          )}
+
+          <motion.section
+            transition={{
+              ease: 'easeOut',
+              type: 'spring',
+              duration: 0.5,
+            }}
+            layout='position'
+            className='card multi-func-card'
+          >
+            <MultiFunCard />
+          </motion.section>
         </section>
 
         <section className='card recommended-topics-card'>

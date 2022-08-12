@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import RichTextEditor from '../components/RichTextEditor.js';
 import ArticleSetup from '../components/ArticleSetup';
 import Nav from '../components/Nav';
 
 const AddArticlePage = () => {
+  useEffect(() => {
+    document.title = 'Write a new article...';
+  }, []);
+
   const [articleBody, setArticleBody] = useState('');
 
   return (
